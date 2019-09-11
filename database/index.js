@@ -1,9 +1,9 @@
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({ //docker exec -it mysql bash
-  host: '172.17.0.2', // change this for aws ec2 instance, docker network inspect bridge
+  // host: '172.17.0.2', // change this for aws ec2 instance, docker network inspect bridge
   user: 'root',
-  password: 'password',
+  password: '',
   database: 'reviewsmodule',
 });
 
