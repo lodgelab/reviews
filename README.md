@@ -54,7 +54,7 @@ npm run start
 
 ### POST: Creates a new review
 
-POST /api/listings/:listing_id/review
+URL /api/listings/:listing_id/review
 
 Success Response:
 ```
@@ -72,7 +72,7 @@ Success Response:
 ---
 ### GET: Retrieves reviews for listing
 
-GET /api/listings/:listing_id/host
+URL /api/listings/:listing_id/host
 
 Success Response:
 ```
@@ -97,7 +97,7 @@ Success Response:
 ---
 ### GET: Retreives host images
 
-GET /api/listings/:listing_id/host
+URL /api/listings/:listing_id/host
 
 Success Response:
 ```
@@ -128,7 +128,7 @@ Success Response:
 ---
 ### GET: Retreives review response
 
-GET /api/listings/review/repsonse/:response_id
+URL /api/listings/review/repsonse/:response_id
 
 Success Response:
 ```
@@ -141,11 +141,33 @@ Success Response:
 ```
 
 ---
-### DELETE: Remove review
+### PUT: Update user review
 
-DELETE /api/listings/:listing_id/review
+URL /api/listings/:listing_id/review
 
 Success Response:
 ```
-"Review has been removed"
+[
+  {
+    "id": 1,
+    "listings_id": 75,
+    "user_id": 15,
+    "date": "September 2019",
+    "comment": "Quasi aut ut perspiciatis. Sunt voluptatibus magnam vero et. Laudantium est voluptatem nulla delectus quo. Perspiciatis necessitatibus minima vero quia aut voluptates excepturi similique."
+  }
+]
+```
+
+---
+### DELETE: Remove user review
+
+URL /api/listings/:listing_id/review
+
+Success Response:
+```
+[
+  {
+    "id": 1
+  }
+]
 ```
