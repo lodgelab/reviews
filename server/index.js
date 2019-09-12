@@ -1,13 +1,13 @@
 const express = require('express');
+const compression = require('compression');
 const expressStaticGzip = require('express-static-gzip');
+const morgan = require('morgan');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const db = require('../database/index.js');
 
 const app = express();
 const port = 3210;
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const compression = require('compression');
-const db = require('../database/index.js');
 
 app.use(compression());
 app.use(cors());
@@ -74,5 +74,14 @@ app.get('/api/listings/review/response/:response_id', (req, res) => {
     }
   });
 });
+
+/*
+Extend the existing API to support all CRUD operations. This should be done with the inherited DBMS:
+  Create / POST - create a new item
+  Read / GET - read an item
+  Update / PUT - update an item
+  Delete / DELETE - delete an item
+  Be sure to select the appropriate routes for each of these actions so they conform to the REST standard.
+*/
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
