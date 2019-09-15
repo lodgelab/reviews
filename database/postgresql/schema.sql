@@ -28,7 +28,7 @@ CREATE TABLE review (
   cleanliness SMALLINT NOT NULL,
   location SMALLINT NOT NULL,
   check_in SMALLINT NOT NULL,
-  value INT NOT NULL,
+  value SMALLINT NOT NULL,
   FOREIGN KEY (property_id) REFERENCES property (id),
   FOREIGN KEY (guest_id) REFERENCES guest (id)
 );
