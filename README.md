@@ -54,7 +54,9 @@ npm run start
 
 ### POST: Creates a new review
 
-URL /api/listings/:listing_id/review
+URL /api/listings/:review_id
+
+Example: /api/listings/1
 
 Success Response:
 ```
@@ -72,7 +74,9 @@ Success Response:
 ---
 ### GET: Retrieves reviews for listing
 
-URL /api/listings/:listing_id/host
+URL: /api/listings/:review_id/
+
+Example: /api/listings/1
 
 Success Response:
 ```
@@ -97,7 +101,9 @@ Success Response:
 ---
 ### GET: Retreives host images
 
-URL /api/listings/:listing_id/host
+URL: /api/listings/:host_id
+
+Example: /api/listings/12
 
 Success Response:
 ```
@@ -112,7 +118,9 @@ Success Response:
 ---
 ### GET: Retreives user reviews
 
-URL: /api/listings/users/:user_id
+URL: /api/listings/guest_id
+
+Example: /api/listings/1
 
 Success Response:
 ```
@@ -128,7 +136,9 @@ Success Response:
 ---
 ### GET: Retreives review response
 
-URL /api/listings/review/repsonse/:response_id
+URL: /api/listings/:review_id/:response_id
+
+Example: /api/listings/12/1
 
 Success Response:
 ```
@@ -143,7 +153,9 @@ Success Response:
 ---
 ### PUT: Update user review
 
-URL /api/listings/:listing_id/review
+URL: /api/listings/:review_id
+
+Example: /api/listings/1
 
 Success Response:
 ```
@@ -161,7 +173,9 @@ Success Response:
 ---
 ### DELETE: Remove user review
 
-URL /api/listings/:listing_id/review
+URL: /api/listings/:review_id
+
+Example: /api/listings/1
 
 Success Response:
 ```
