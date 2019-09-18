@@ -1,10 +1,10 @@
 const fs = require('fs');
 const faker = require('faker');
 
-console.log('ETA 40 mins');
+console.log('ETA 7 mins');
 
 const writeProperty = fs.createWriteStream('./database/csvdata/property.csv');
-writeProperty.write('id,host_picture,host_name\n', 'utf8');
+writeProperty.write('host_picture,host_name\n', 'utf8');
 
 function generatePropertyCsv(writer, encoding, callback) {
   let i = 10000000;
@@ -36,7 +36,7 @@ generatePropertyCsv(writeProperty, 'utf-8', () => {
 });
 
 const writeGuest = fs.createWriteStream('./database/csvdata/guest.csv');
-writeGuest.write('id,guest_picture,guest_name\n', 'utf8');
+writeGuest.write('guest_picture,guest_name\n', 'utf8');
 
 function generateGuestCsv(writer, encoding, callback) {
   let i = 10000000;
@@ -73,7 +73,7 @@ writeReview.write('id,property_id,guest_id,review,review_response,date,accuracy,
 const randomNum = (num) => Math.ceil(Math.random() * num);
 
 function generateReviewCsv(writer, encoding, callback) {
-  let i = 200000000;
+  let i = 100000000;
   let id = 0;
   function write() {
     let ok = true;
@@ -83,8 +83,10 @@ function generateReviewCsv(writer, encoding, callback) {
       if (id % 1000000 === 0) { console.log(id); }
       const propertyId = randomNum(10000000);
       const guestId = randomNum(10000000);
-      const review = faker.lorem.paragraph();
-      const reviewResponse = faker.random.boolean();
+      const review = faker.lorem.sentence();
+      let reviewResponse = null;
+      const randomResponse = randomNum(100);
+      if (randomResponse <= 15) { reviewResponse = faker.lorem.sentence(); }
       const fullDate = faker.date.past();
       const date = `${fullDate.getFullYear()}-${fullDate.getMonth() + 1}-${fullDate.getDay() + 1}`;
       const accuracy = randomNum(5);

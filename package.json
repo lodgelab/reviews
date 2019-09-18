@@ -29,7 +29,8 @@
     "server-dev": "nodemon server/index.js -w",
     "seeder": "node database/seeder.js",
     "test": "jest --coverage",
-    "create": "psql postgres -f ./database/postgresql/schema.sql",
+    "create-p": "psql postgres -f ./database/postgresql/schema.sql",
+    "create-c": "cqlsh -f ./database/cassandra/schema.cql",
     "csv": "node --max-old-space-size=8192 ./database/datagenerator.js"
   },
   "dependencies": {

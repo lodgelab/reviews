@@ -21,7 +21,7 @@ CREATE TABLE review (
   property_id INT NOT NULL,
   guest_id INT NOT NULL,
   review TEXT NOT NULL,
-  review_response TEXT NOT NULL,
+  review_response TEXT,
   date DATE,
   accuracy SMALLINT NOT NULL,
   communication SMALLINT NOT NULL,

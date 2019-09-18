@@ -1,39 +1,33 @@
-DROP KEYSPACE IF EXISTS reviews
+DROP KEYSPACE IF EXISTS reviews;
 
 CREATE KEYSPACE reviews WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
 
-use reviews
+use reviews;
 
-CREATE TABLE home (
-  id SERIAL PRIMARY KEY,
-  host_picture VARCHAR(100) NOT NULL,
-  host_name VARCHAR(50) NOT NULL
+CREATE TABLE property (
+  id int PRIMARY KEY,
+  host_picture varchar,
+  host_name varchar
 );
 
 CREATE TABLE guest (
-  id SERIAL PRIMARY KEY,
-  guest_picture VARCHAR(100) NOT NULL,
-  guest_name VARCHAR(50) NOT NULL
+  id int PRIMARY KEY,
+  guest_picture varchar,
+  guest_name varchar
 );
 
 CREATE TABLE review (
-  id SERIAL PRIMARY KEY,
-  home_id INT NOT NULL,
-  guest_id INT NOT NULL,
-  review TEXT NOT NULL,
-  review_response TEXT NOT NULL,
-  date DATE,
-  accuracy SMALLINT NOT NULL,
-  communication SMALLINT NOT NULL,
-  cleanliness SMALLINT NOT NULL,
-  location SMALLINT NOT NULL,
-  check_in SMALLINT NOT NULL,
-  value SMALLINT NOT NULL,
-  FOREIGN KEY (home_id) REFERENCES home (id),
-  FOREIGN KEY (guest_id) REFERENCES guest (id)
+  id int,
+  property_id int,
+  guest_id int,
+  review text,
+  review_response text,
+  date date,
+  accuracy smallint,
+  communication smallint,
+  cleanliness smallint,
+  location smallint,
+  check_in smallint,
+  value smallint,
+  PRIMARY KEY (id, property_id, guest_id)
 );
-
-// Compress from server
-// change random number javascript
-// string concat takes a while
-// test how long to seed database in chunks
