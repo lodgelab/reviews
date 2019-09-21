@@ -52,136 +52,68 @@ npm run start
 
 ## RESTful CRUD API
 
-### POST: Creates a new review
+### POST: Creates a new review for a property
 
-URL /api/listings/:review_id
+URL /api/:property/review
 
-Example: /api/listings/1
+Example: /api/10000/review
 
 Success Response:
 ```
-[
-  {
-    "id": 1,
-    "listings_id": 75,
-    "user_id": 15,
-    "date": "September 2019",
-    "comment": "Ipsum quo eveniet. Sunt voluptatibus magnam vero et. Laudantium est voluptatem nulla delectus quo. Perspiciatis necessitatibus minima vero quia aut voluptates excepturi similique."
-  }
-]
+"Review has been posted"
 ```
 
 ---
-### GET: Retrieves reviews for listing
+### GET: Retreives all reviews for one property
 
-URL: /api/listings/:review_id/
+URL: /api/:property/reviews
 
-Example: /api/listings/1
+Example: /api/100000/reviews
 
 Success Response:
 ```
 [
   {
-    "id": 1,
-    "listings_id": 60,
-    "user_id": 88,
-    "date": "March 2019",
-    "comment": "Odit numquam ut veritatis itaque quae expedita pariatur molestias. Corporis ex ab minus veritatis et sed explicabo voluptatum ut. Quis cum explicabo dolores eum omnis aut non. Aut magni soluta qui ab omnis quis alias.",
-    "accuracy": 3,
-    "communication": 4,
-    "cleanliness": 4.
+    "property_id": 100000,
+    "id": 6002811,
+    "accuracy": 1,
+    "check_in": 2,
+    "cleanliness": 3,
+    "communication": 2,
+    "date": "2018-10-04",
+    "guest_id": 9632250,
+    "guest_name": "Arlie",
+    "guest_picture": "https://s3.amazonaws.com/uifaces/faces/twitter/jennyshen/128.jpg",
+    "host_name": "Nathaniel",
+    "host_picture": "https://s3.amazonaws.com/uifaces/faces/twitter/newbrushes/128.jpg",
     "location": 5,
-    "checkin": 2,
-    "value": 4,
-    "response_id": null
-  }
-]
-```
-
----
-### GET: Retreives host images
-
-URL: /api/listings/:host_id
-
-Example: /api/listings/12
-
-Success Response:
-```
-[
-  {
-    "host_pic": "https://s3.amazonaws.com/uifaces/faces/twitter/antjanus/128.jpg",
-    "host_name": "Zander"
-  }
-]
-```
-
----
-### GET: Retreives user reviews
-
-URL: /api/listings/guest_id
-
-Example: /api/listings/1
-
-Success Response:
-```
-[
-  {
-    "id": 1,
-    "pic": "https://s3.amazonaws.com/uifaces/faces/twitter/normanbox/128.jpg",
-    "name": "Eleanora"
-  }
-]
-```
-
----
-### GET: Retreives review response
-
-URL: /api/listings/:review_id/:response_id
-
-Example: /api/listings/12/1
-
-Success Response:
-```
-[
-  {
-    "id": 1,
-    "comment": "Quasi aut ut perspiciatis sed. Consequatur qui aut est est consequatur. Ratione sunt accusamus quidem veniam quasi dolores suscipit."
-  }
+    "review": "Vel reiciendis quod.",
+    "review_response": "null",
+    "value": 5
+  },
 ]
 ```
 
 ---
 ### PUT: Update user review
 
-URL: /api/listings/:review_id
+URL: /api/:property/:review
 
-Example: /api/listings/1
+Example: /api/10000/95000000
 
 Success Response:
 ```
-[
-  {
-    "id": 1,
-    "listings_id": 75,
-    "user_id": 15,
-    "date": "September 2019",
-    "comment": "Quasi aut ut perspiciatis. Sunt voluptatibus magnam vero et. Laudantium est voluptatem nulla delectus quo. Perspiciatis necessitatibus minima vero quia aut voluptates excepturi similique."
-  }
-]
+"Review has been updated"
 ```
 
 ---
 ### DELETE: Remove user review
 
-URL: /api/listings/:review_id
+URL: /api/:property/:review
 
-Example: /api/listings/1
+Example: /api/10000/95000000
 
 Success Response:
 ```
-[
-  {
-    "id": 1
-  }
-]
+"Review has been deleted"
 ```
