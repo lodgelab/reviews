@@ -1,27 +1,12 @@
 const CompressionPlugin = require('compression-webpack-plugin');
-const BrotliPlugin = require('brotli-webpack-plugin');
+const path = require('path');
 
 module.exports = {
-  // plugins: [
-  //   new CompressionPlugin({
-  //     filename: '[path].gz[query]',
-  //     algorithm: 'gzip',
-  //     test: /\.js$|\.css$|\.html$/,
-  //     threshold: 10240,
-  //     minRatio: 0.7,
-  //   }),
-  //   new BrotliPlugin({
-  //     filename: '[path].br[query]',
-  //     test: /\.js$|\.css$|\.html$/,
-  //     threshold: 10240,
-  //     minRatio: 0.7,
-  //   }),
-  // ],
   mode: 'production',
-  entry: `${__dirname}/client/src/index.jsx`,
+  entry: './client/index.jsx',
   output: {
     filename: 'bundle.js',
-    path: `${__dirname}/client/dist`,
+    path: path.resolve(__dirname, 'public'),
   },
   module: {
     rules: [

@@ -4,22 +4,14 @@ CREATE KEYSPACE reviews WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replic
 
 use reviews;
 
-CREATE TABLE property (
-  id int PRIMARY KEY,
-  host_picture varchar,
-  host_name varchar
-);
-
-CREATE TABLE guest (
-  id int PRIMARY KEY,
-  guest_picture varchar,
-  guest_name varchar
-);
-
 CREATE TABLE review (
   id int,
   property_id int,
+  host_picture varchar,
+  host_name varchar,
   guest_id int,
+  guest_picture varchar,
+  guest_name varchar,
   review text,
   review_response text,
   date date,
@@ -29,5 +21,5 @@ CREATE TABLE review (
   location smallint,
   check_in smallint,
   value smallint,
-  PRIMARY KEY (id, property_id, guest_id)
+  PRIMARY KEY (property_id, id)
 );

@@ -54,12 +54,13 @@ class ReviewsModule extends React.Component {
 
   componentDidMount() {
     // 1. get all the reviews for a particular listing
-    const listingID = window.location.href.split('/').reverse()[1];
-    axios.get(`http://localhost:3210/api/listings/${listingID}/reviews`)
-      .then((listingReviews) => {
+    let propertyId = window.location.pathname.slice(1, -1);
+
+    axios.get(`/api/${propertyId}/reviews`)
+      .then((res) => {
       // 2. update the reviews state
         this.setState({
-          reviews: listingReviews.data,
+          reviews: res.data,
         });
       })
       .then(() => {
@@ -101,18 +102,18 @@ class ReviewsModule extends React.Component {
         });
       })
       .catch((error) => {
-        console.log(`AXIOS GET LISTING ${listingID}'S REVIEWS ERROR:`);
+        console.log(`AXIOS GET LISTING ${propertyId}'S REVIEWS ERROR:`);
         console.log(error);
       });
 
-    axios.get(`http://localhost:3210/api/listings/${listingID}/host`)
-      .then((listingHost) => {
+    axios.get(`/api/${propertyId}`)
+      .then((res) => {
         this.setState({
-          host: listingHost.data[0],
+          host: res.data[0],
         });
       })
       .catch((error) => {
-        console.log(`AXIOS GET LISTING ${listingID}'S HOST ERROR:`);
+        console.log(`AXIOS GET LISTING ${propertyId}'S HOST ERROR:`);
         console.log(error);
       });
   }
