@@ -73,73 +73,64 @@ class ReviewEntry extends React.Component {
   }
 
   componentDidMount() {
-    const userID = this.props.reviewEntry.users_id;
-    axios.get(`/api/listings/users/${userID}`)
-      .then((listingUser) => {
-        this.setState({
-          user: listingUser.data[0],
-        });
-      })
-      .catch((error) => {
-        console.log(`AXIOS GET LISTING ${listingID}'S USER ERROR:`);
-        console.log(error);
-      });
-
-    const responseID = this.props.reviewEntry.responses_id;
-    if (responseID) {
-      axios.get(`/api/listings/review/response/${responseID}`)
-        .then((reviewResponse) => {
-          this.setState({
-            response: reviewResponse.data[0].comment,
-          });
-        })
-        .catch((error) => {
-          console.log('AXIOS GET REVIEW\'S RESPONSE ERROR:');
-          console.log(error);
-        });
+    const { reviewEntry } = this.props;
+    const guest = {
+      id: reviewEntry.guest_id,
+      pic: reviewEntry.guest_picture,
+      name: reviewEntry.guest_name
     }
+    let reviewResponse = '';
+
+    if (reviewEntry.review_response !== 'null') {
+      reviewResponse = reviewEntry.review_response;
+    }
+
+    this.setState({
+      user: guest,
+      response: reviewResponse,
+    })
   }
 
   render() {
     let response = '';
-    if (this.props.reviewEntry.responses_id) {
+    const { reviewEntry } = this.props;
+
+    if (this.state.response !== '') {
       response = (
         <ResponseBlock>
-          <ResponseProfilePic src={this.props.hostInfo.host_pic} alt="" />
+          <ResponseProfilePic src={this.props.reviewEntry.host_picture} alt="" />
           <NameResponseDate>
-    <Name>
+            <Name>
               Response from
               {' '}
-              {this.props.hostInfo.host_name}
-:
+              {this.props.reviewEntry.host_name}:
             </Name>
-    <div>
+            <div>
               {this.state.response}
             </div>
-    <ResponseDate>
+            <ResponseDate>
               {this.props.reviewEntry.date}
             </ResponseDate>
-  </NameResponseDate>
-                </ResponseBlock>
+          </NameResponseDate>
+        </ResponseBlock>
       );
     }
 
-    let comment = <span>{this.props.reviewEntry.comment}</span>;
-    if (this.props.reviewEntry.comment.length > 200) {
+    let comment = <span>{this.props.reviewEntry.review}</span>
+    if (this.props.reviewEntry.review > 200) {
       comment = (
         <span>
           <span>
-    {this.props.reviewEntry.comment.slice(0, 200)}
-...
-  </span>
+            {this.props.reviewEntry.review.slice(0, 200)}...
+          </span>
           <ReadMore onClick={this.readMore}>
             Read more
-  </ReadMore>
-                </span>
+          </ReadMore>
+        </span>
       );
     }
     if (this.state.commentExpanded) {
-      comment = <span>{this.props.reviewEntry.comment}</span>;
+      commnet = <span>{this.props.reviewEntry.comment}</span>;
     }
 
     return (

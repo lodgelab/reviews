@@ -40,7 +40,7 @@ class ReviewsModule extends React.Component {
   handleSearchSubmit(e) {
     e.preventDefault();
     const input = $('#search-reviews').val();
-    const filter = this.state.reviews.filter((review) => review.comment.includes(input));
+    const filter = this.state.reviews.filter((review) => review.review.includes(input));
     this.setState((prevState) => ({
       filteredReviews: filter,
       search: input,
@@ -56,11 +56,12 @@ class ReviewsModule extends React.Component {
     // 1. get all the reviews for a particular listing
     let propertyId = window.location.pathname.slice(1, -1);
 
-    axios.get(`/api/${propertyId}/reviews`)
+    axios.get(`http://localhost:8000/api/${propertyId}/reviews`)
       .then((res) => {
       // 2. update the reviews state
         this.setState({
           reviews: res.data,
+          host: res.data[0],
         });
       })
       .then(() => {
@@ -76,7 +77,7 @@ class ReviewsModule extends React.Component {
           communication += review.communication;
           cleanliness += review.cleanliness;
           location += review.location;
-          checkin += review.checkin;
+          checkin += review.check_in;
           value += review.value;
         });
         const numReviews = this.state.reviews.length;
@@ -103,17 +104,6 @@ class ReviewsModule extends React.Component {
       })
       .catch((error) => {
         console.log(`AXIOS GET LISTING ${propertyId}'S REVIEWS ERROR:`);
-        console.log(error);
-      });
-
-    axios.get(`/api/${propertyId}`)
-      .then((res) => {
-        this.setState({
-          host: res.data[0],
-        });
-      })
-      .catch((error) => {
-        console.log(`AXIOS GET LISTING ${propertyId}'S HOST ERROR:`);
         console.log(error);
       });
   }
