@@ -1,3 +1,4 @@
+const newrelic = require('newrelic');
 const express = require('express');
 const compression = require('compression');
 const morgan = require('morgan');
@@ -10,7 +11,7 @@ const port = 8000;
 
 app.use(compression());
 app.use(cors());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/:property', express.static('public'));

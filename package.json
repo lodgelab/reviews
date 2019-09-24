@@ -27,11 +27,11 @@
   "scripts": {
     "react-dev": "webpack -d -p --watch",
     "server-dev": "nodemon server/index.js -w",
-    "seeder": "node database/seeder.js",
     "test": "jest --coverage",
+    "csv": "node --max-old-space-size=8192 ./database/datagenerator.js",
     "create-p": "psql postgres -f ./database/postgresql/schema.sql",
     "create-c": "cqlsh -f ./database/cassandra/schema.cql",
-    "csv": "node --max-old-space-size=8192 ./database/datagenerator.js"
+    "artillery": "artillery run hello.yml"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -44,9 +44,8 @@
     "file-system": "^2.2.2",
     "jquery": "^3.4.1",
     "morgan": "^1.9.1",
-    "mysql": "^2.17.1",
+    "newrelic": "^5.11.0",
     "nodemon": "^1.19.2",
-    "pg": "^7.12.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-star-ratings": "^2.3.0",
