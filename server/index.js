@@ -1,4 +1,4 @@
-const newrelic = require('newrelic');
+require('newrelic');
 const express = require('express');
 const compression = require('compression');
 const morgan = require('morgan');
@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const db = require('../database/index.js');
 
 const app = express();
-const port = 8000;
+const port = 3001;
 
 app.use(compression());
 app.use(cors());

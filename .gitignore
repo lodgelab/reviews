@@ -27,10 +27,8 @@ build/
 minctech-ec2-key-pair.pem
 
 # csv data files
-property.csv
-guest.csv
-review.csv
 reviews.csv
+ec2.csv
 
 # New Relic
 newrelic.js

@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import $ from 'jquery';
 import styled from 'styled-components';
 import Summary from './components/Summary.jsx';
 import ReviewList from './components/ReviewList.jsx';
@@ -56,7 +55,7 @@ class ReviewsModule extends React.Component {
     // 1. get all the reviews for a particular listing
     let propertyId = window.location.pathname.slice(1, -1);
 
-    axios.get(`http://localhost:8000/api/${propertyId}/reviews`)
+    axios.get(`http://localhost:3001/api/${propertyId}/reviews`)
       .then((res) => {
       // 2. update the reviews state
         this.setState({
