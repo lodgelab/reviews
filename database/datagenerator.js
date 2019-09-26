@@ -3,13 +3,13 @@ const faker = require('faker');
 
 console.log('ETA 10 mins');
 
-const writeReview = fs.createWriteStream('./database/csvdata/reviews.csv');
+const writeReview = fs.createWriteStream('./database/csvdata/ec2.csv');
 writeReview.write('id,property_id,host_picture,host_name,guest_id,guest_picture,guest_name,review,review_response,date,accuracy,communication,cleanliness,location,check_in,value\n', 'utf8');
 
 const randomNum = (num) => Math.ceil(Math.random() * num);
 
 function generateReviewCsv(writer, encoding, callback) {
-  let i = 100000000;
+  let i = 50000000;
   let id = 0;
   function write() {
     let ok = true;

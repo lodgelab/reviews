@@ -65,29 +65,31 @@ class ReviewsModule extends React.Component {
       })
       .then(() => {
       // 3. update each rating's state
-        let accuracy = 0;
-        let communication = 0;
-        let cleanliness = 0;
-        let location = 0;
-        let checkin = 0;
-        let value = 0;
-        this.state.reviews.forEach((review) => {
-          accuracy += review.accuracy;
-          communication += review.communication;
-          cleanliness += review.cleanliness;
-          location += review.location;
-          checkin += review.check_in;
-          value += review.value;
-        });
-        const numReviews = this.state.reviews.length;
-        this.setState({
-          accuracy: Math.round(accuracy / numReviews * 2) / 2,
-          communication: Math.round(communication / numReviews * 2) / 2,
-          cleanliness: Math.round(cleanliness / numReviews * 2) / 2,
-          location: Math.round(location / numReviews * 2) / 2,
-          checkin: Math.round(checkin / numReviews * 2) / 2,
-          value: Math.round(value / numReviews * 2) / 2,
-        });
+        if (this.state.reviews.length > 0) {
+          let accuracy = 0;
+          let communication = 0;
+          let cleanliness = 0;
+          let location = 0;
+          let checkin = 0;
+          let value = 0;
+          this.state.reviews.forEach((review) => {
+            accuracy += review.accuracy;
+            communication += review.communication;
+            cleanliness += review.cleanliness;
+            location += review.location;
+            checkin += review.check_in;
+            value += review.value;
+          });
+          const numReviews = this.state.reviews.length;
+          this.setState({
+            accuracy: Math.round(accuracy / numReviews * 2) / 2,
+            communication: Math.round(communication / numReviews * 2) / 2,
+            cleanliness: Math.round(cleanliness / numReviews * 2) / 2,
+            location: Math.round(location / numReviews * 2) / 2,
+            checkin: Math.round(checkin / numReviews * 2) / 2,
+            value: Math.round(value / numReviews * 2) / 2,
+          });
+        }
       })
       .then(() => {
       // 4. update the overall rating
