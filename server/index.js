@@ -14,10 +14,10 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/:property', express.static('public'));
+app.use('/listings/:property', express.static('public'));
 app.use(morgan('dev'));
 
-app.get('/api/:property/reviews', (req, res) => {
+app.get('/api/listings/:property/reviews', (req, res) => {
   const { property } = req.params;
   db.getReviews(property, (error, review) => {
     if (error) { return error; }
@@ -25,7 +25,7 @@ app.get('/api/:property/reviews', (req, res) => {
   });
 });
 
-app.post('/api/:property/review', (req, res) => {
+app.post('/api/listings/:property/review', (req, res) => {
   const { property } = req.params;
   db.postReview(req.body, property, (error) => {
     if (error) { return error; }
@@ -33,7 +33,7 @@ app.post('/api/:property/review', (req, res) => {
   });
 });
 
-app.put('/api/:property/:review', (req, res) => {
+app.put('/api/listings/:property/:review', (req, res) => {
   const { property, review } = req.params;
   db.putReview(req.body, property, review, (error) => {
     if (error) { return error; }
@@ -41,7 +41,7 @@ app.put('/api/:property/:review', (req, res) => {
   });
 });
 
-app.delete('/api/:property/:review', (req, res) => {
+app.delete('/api/listings/:property/:review', (req, res) => {
   const { property, review } = req.params;
   db.deleteReview(property, review, (error) => {
     if (error) { return review; }
