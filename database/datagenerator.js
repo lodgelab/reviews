@@ -1,15 +1,15 @@
 const fs = require('fs');
 const faker = require('faker');
 
-console.log('ETA 10 mins');
+console.log('ETA 1 min');
 
-const writeReview = fs.createWriteStream('./database/csvdata/ec2.csv');
+const writeReview = fs.createWriteStream('./database/csvdata/reviews.csv');
 writeReview.write('id,property_id,host_picture,host_name,guest_id,guest_picture,guest_name,review,review_response,date,accuracy,communication,cleanliness,location,check_in,value\n', 'utf8');
 
 const randomNum = (num) => Math.ceil(Math.random() * num);
 
 function generateReviewCsv(writer, encoding, callback) {
-  let i = 50000000;
+  let i = 10000000;
   let id = 0;
   function write() {
     let ok = true;
@@ -17,10 +17,10 @@ function generateReviewCsv(writer, encoding, callback) {
       i -= 1;
       id += 1;
       if (id % 1000000 === 0) { console.log(id); }
-      const propertyId = randomNum(10000000);
+      const propertyId = randomNum(1000000);
       const hostPicture = faker.image.avatar();
       const hostName = faker.name.firstName();
-      const guestId = randomNum(10000000);
+      const guestId = randomNum(1000000);
       const guestPicture = faker.image.avatar();
       const guestName = faker.name.firstName();
       const review = faker.lorem.sentence();

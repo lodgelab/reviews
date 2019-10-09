@@ -1,6 +1,6 @@
 const cassandra = require('cassandra-driver');
 
-const client = new cassandra.Client({ contactPoints: ['13.57.212.205', '54.183.254.4'], localDataCenter: 'us-west', keyspace: 'reviews' });
+const client = new cassandra.Client({ contactPoints: ['52.53.224.67'], localDataCenter: 'us-west', keyspace: 'reviews' });
 
 const getReviews = (propertyId, cb) => {
   const query = 'SELECT * FROM review WHERE property_id = ?';
@@ -25,7 +25,7 @@ const postReview = (guestReview, propertyId, cb) => {
     checkIn,
     value,
   } = guestReview;
-  const query = 'INSERT INTO review (id, property_id, host_picture, host_name, guest_id, guest_picture, guest_name, review, review_response, date, accuracy, communication, cleanliness, location, check_in, value) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+  const query = 'INSERT INTO review (id, property_id, host_picture, ho`st_name, guest_id, guest_picture, guest_name, review, review_response, date, accuracy, communication, cleanliness, location, check_in, value) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
   client.execute(query, [id, propertyId, hostPicture, hostName, guestId, guestPicture, guestName, review, null, date, accuracy, communication, cleanliness, location, checkIn, value], { prepare: true })
     .then((result) => cb(null, result.rows));

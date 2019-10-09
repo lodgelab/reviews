@@ -1,6 +1,6 @@
 DROP KEYSPACE IF EXISTS reviews;
 
-CREATE KEYSPACE reviews WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 2 };
+CREATE KEYSPACE reviews WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
 
 use reviews;
 
