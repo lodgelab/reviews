@@ -1,6 +1,6 @@
 const cassandra = require('cassandra-driver');
 
-const client = new cassandra.Client({ contactPoints: ['52.53.224.67'], localDataCenter: 'us-west', keyspace: 'reviews' });
+const client = new cassandra.Client({ contactPoints: ['54.193.55.120', '13.52.100.218', '54.67.52.8', '18.144.47.115', '54.193.27.252', '54.219.184.120'], localDataCenter: 'us-west', keyspace: 'reviews' });
 
 const getReviews = (propertyId, cb) => {
   const query = 'SELECT * FROM review WHERE property_id = ?';
