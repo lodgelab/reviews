@@ -2,6 +2,8 @@
 
 > Project description
 
+Scaled the backend of a property reservations app to handle high volume network traffic on an existing code base
+
 ## Related Projects
 
   - https://github.com/lodgelab/images
@@ -21,10 +23,7 @@
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 12.8.0
-- etc
+- Node 10.16.3
 
 ## Development
 
@@ -36,14 +35,14 @@ From within the root directory:
 npm install
 ```
 
-### Seeding database
+### Seeding database with 10 million records
 
 ```sh
 mysql -u root < ./schema.sql
 npm run seeder
 ```
 
-### Start webpack and run server
+### Start webpack and server
 
 ```sh
 npm run build
